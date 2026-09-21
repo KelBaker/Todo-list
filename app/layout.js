@@ -13,7 +13,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Tarefas",
+  title: "Todo List",
   description: "Gerenciador de tarefas diárias, simples e direto ao ponto.",
 };
 

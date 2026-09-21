@@ -1,4 +1,4 @@
-# ✅ Tarefas
+# ✅ Todo List
 
 Gerenciador de tarefas diárias — simples, rápido e direto ao ponto. Adicione, edite, conclua e remova tarefas com persistência automática no navegador.
 
@@ -6,7 +6,7 @@ Gerenciador de tarefas diárias — simples, rápido e direto ao ponto. Adicione
 
 ## 🔗 Demo
 
-_Em breve_
+[todo-list-kelbakers-projects.vercel.app](https://todo-list-kelbakers-projects.vercel.app)
 
 ## ✨ Funcionalidades
 
@@ -29,8 +29,8 @@ _Em breve_
 ## 🚀 Como rodar localmente
 
 ```bash
-git clone https://github.com/KelBaker/tarefas.git
-cd tarefas
+git clone https://github.com/KelBaker/Todo-list.git
+cd Todo-list
 npm install
 npm run dev
 ```

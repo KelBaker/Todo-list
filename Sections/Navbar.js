@@ -38,7 +38,7 @@ export default function Navbar() {
 
     return (
         <nav className={navbarStyles.navbar}>
-            <span className={navbarStyles.brand}>Tarefas</span>
+            <span className={navbarStyles.brand}>Todo List</span>
 
             {isEditing ? (
                 <input
