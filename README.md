@@ -1,66 +1,53 @@
+# ✅ Tarefas
 
----
+Gerenciador de tarefas diárias — simples, rápido e direto ao ponto. Adicione, edite, conclua e remova tarefas com persistência automática no navegador.
 
-# To-Do List
+`nextjs` `react` `sass` `todo-app` `productivity`
 
-## Descrição do Projeto
+## 🔗 Demo
 
-O **To-Do List** é uma aplicação web desenvolvida utilizando **Next.js** e **SASS**, projetada para facilitar o gerenciamento de tarefas diárias. Com uma interface intuitiva e recursos essenciais, a aplicação permite aos usuários organizar suas atividades de forma eficiente e prática.
+_Em breve_
 
-## Como Começar
+## ✨ Funcionalidades
 
-### 1. Clonando o Repositório
+- **Adicionar tarefas** com um clique ou tecla Enter
+- **Editar tarefas** existentes a qualquer momento
+- **Marcar como concluída** — a tarefa migra automaticamente para a seção de finalizadas
+- **Remover tarefas**, com confirmação antes de excluir
+- **Persistência automática** no `localStorage` do navegador — as tarefas continuam lá ao recarregar a página
+- Estados vazios tratados (sem lista de tarefas em branco e confusa)
+- Interface responsiva, minimalista
 
-Para iniciar, clone o repositório em sua máquina local:
+## 🛠️ Tecnologias
+
+- Next.js (App Router)
+- React (hooks: `useState`, `useEffect`)
+- SASS (variáveis e mixins compartilhados)
+- Fonte Geist (a mesma usada pela Vercel)
+- `localStorage` da Web API — sem backend, tudo roda no navegador
+
+## 🚀 Como rodar localmente
 
 ```bash
-https://github.com/KelBaker/To-do-list---Legaplan-.git
-cd to-do-list
-```
-
-### 2. Instalando Dependências
-
-Instale as dependências necessárias utilizando o npm:
-
-```bash
+git clone https://github.com/KelBaker/tarefas.git
+cd tarefas
 npm install
-```
-
-### 3. Iniciando o Servidor de Desenvolvimento
-
-Para iniciar o servidor de desenvolvimento e visualizar a aplicação, execute:
-
-```bash
 npm run dev
 ```
 
-### 4. Acessando a Aplicação
+Acesse [http://localhost:3000](http://localhost:3000)
 
-Após iniciar o servidor, acesse a aplicação em seu navegador:
+## 🔭 Possíveis melhorias
 
-[http://localhost:3000](http://localhost:3000)
+- Sincronizar tarefas entre dispositivos (hoje é só local, por navegador)
+- Categorias/etiquetas por tarefa
+- Ordenação por prioridade ou data
 
-## Funcionalidades
+## 📄 Licença
 
-- **Adicionar Tarefas**: Criação de novas tarefas de forma rápida.
-- **Editar Tarefas**: Modificação de tarefas existentes conforme necessário.
-- **Remover Tarefas**: Exclusão de tarefas concluídas ou indesejadas.
-- **Marcar Tarefas como Concluídas**: Organização e acompanhamento do progresso.
-- **Salvamento Local Automático**: Persistência das tarefas no armazenamento local do navegador.
+Este projeto está sob a licença MIT — veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## Tecnologias Utilizadas
+## 📫 Contato
 
-- **Next.js**: Framework para aplicações React que oferece otimização e recursos avançados de desenvolvimento.
-- **SASS**: Pré-processador CSS que facilita a estilização da aplicação.
-- **Local Storage**: Para armazenamento das tarefas diretamente no navegador do usuário.
-
-## Contato
-
-Para quaisquer dúvidas ou sugestões, entre em contato por email.
-
-Meu Email: Kelbaker56@gmail.com
-
-Meu linkedin [Kelvin Henrique](https://www.linkedin.com/in/kelvin-henrique-507bb9228/)
-
----
-
+- [LinkedIn](https://www.linkedin.com/in/kelvin-h-507bb9228/)
+- kelbaker56@gmail.com
