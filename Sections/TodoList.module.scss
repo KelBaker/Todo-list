@@ -1,51 +1,70 @@
-// Variáveis
-$white: #ffffff;
-$light-gray: #EAECF0;
-$gray: #D7DDE9;
-$dark-gray: #333;
-$blue: #007bff;
-$modal-bg: rgba(0, 0, 0, 0.5);
-$shadow: 0px 24px 48px 12px rgba(16, 24, 40, 0.18);
-$hover-bg: #F7F9FD;
+@use '../styles/variables' as v;
 
-// Mixins
-@mixin box-style($width, $height, $radius, $shadow) {
-  width: $width;
-  height: $height;
-  border-radius: $radius;
-  box-shadow: $shadow;
+// Container que dá largura consistente pro título, card e botão juntos
+.pageWrapper {
+  width: min(600px, calc(100% - 48px));
+  margin: 4em auto 0;
 }
 
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.pageHeader {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: v.$text;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 14px;
+    color: v.$muted;
+  }
 }
 
 // Estilos gerais para a lista de tarefas
 .todoList {
-  background-color: $white;
-  padding: 1.5rem;
-  border-radius: 16px;
-  width: 450px;
-  margin: 3em auto 0;
-  border: 0.2px solid $light-gray;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.123);
+  background-color: v.$surface;
+  padding: 1.75rem;
+  border-radius: 14px;
+  width: 100%;
+  border: 1px solid v.$border;
 }
 
 // Estilos para o cabeçalho da lista de tarefas
 .header {
-  font-size: 16px;
-  color: #00000083;
-  margin-bottom: 1rem;
-  text-align: center;
-  font-weight: 200;
-  padding: 10px 0;
+  font-size: 13px;
+  color: v.$muted;
+  margin-bottom: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 6px 2px;
+}
+
+// Mensagem de estado vazio
+.emptyState {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  color: v.$muted;
+  font-size: 14px;
+  padding: 1.25rem 2px 1.75rem;
+}
+
+.emptyIcon {
+  font-size: 20px;
+  opacity: 0.4;
 }
 
 // Seção de tarefas concluídas
 .completedTasksSection {
-  margin-top: 15px;
+  margin-top: 20px;
+  border-top: 1px solid v.$border;
+  padding-top: 16px;
 }
 
 // Estilos para cada item da tarefa
@@ -54,14 +73,13 @@ $hover-bg: #F7F9FD;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  padding: 0.9rem 1.2rem;
+  gap: 0.4rem;
+  padding: 0.65rem 0.4rem;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
-  border: 1px dashed rgba(16, 24, 40, 0.1);
+  transition: background-color 0.15s ease;
 
   &:hover {
-    background-color: $hover-bg;
+    background-color: v.$hover-bg;
   }
 }
 
@@ -69,24 +87,28 @@ $hover-bg: #F7F9FD;
 .completedTaskItem {
   .taskText {
     text-decoration: line-through;
-    color: #999;
+    color: v.$muted;
   }
 
   .checkbox + .customCheckbox {
-    background-color: #0796d37e;
-    border: 1px solid $blue;
+    background-color: v.$primary;
+    border-color: v.$primary;
+
+    &:after {
+      opacity: 1;
+      border-color: v.$white;
+    }
   }
 }
 
 // Estilos para a lista de tarefas e tarefas concluídas
-.taskList, 
+.taskList,
 .completedTasksList {
   max-height: 300px;
   overflow-y: auto;
-
-  &:nth-of-type(2) {
-    overflow-y: auto;
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 // Estilo para a caixa de seleção
@@ -94,12 +116,13 @@ $hover-bg: #F7F9FD;
   display: none;
 
   + .customCheckbox {
-    margin-right: 1rem;
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    border: 1px solid $gray;
-    background-color: $white;
+    margin-right: 0.65rem;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 1.5px solid v.$border;
+    background-color: v.$white;
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -107,31 +130,49 @@ $hover-bg: #F7F9FD;
     &:after {
       content: '';
       position: absolute;
-      left: 8px;
+      left: 5px;
       top: 1px;
-      width: 5px;
-      height: 13px;
-      border: solid $blue;
-      border-width: 0 2px 2px 0;
+      width: 4px;
+      height: 9px;
+      border: solid v.$white;
+      border-width: 0 1.5px 1.5px 0;
       transform: rotate(45deg);
       opacity: 0;
-      transition: opacity 0.2s;
+      transition: opacity 0.15s;
     }
   }
 
-  &:checked + .customCheckbox:after {
-    opacity: 1;
-  }
-
   + .customCheckbox:hover {
-    border-color: $blue;
+    border-color: v.$primary;
   }
 }
 
 // Estilos para o texto da tarefa
 .taskText {
   flex-grow: 1;
-  color: $dark-gray;
+  color: v.$text;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+// Botão de editar
+.editBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  flex-shrink: 0;
+
+  .taskItem:hover &,
+  .completedTaskItem:hover & {
+    opacity: 0.55;
+  }
+
+  &:hover {
+    opacity: 1 !important;
+  }
 }
 
 // Estilo para o botão de deletar
@@ -139,26 +180,43 @@ $hover-bg: #F7F9FD;
   background: none;
   border: none;
   cursor: pointer;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  .taskItem:hover &,
+  .completedTaskItem:hover & {
+    opacity: 0.55;
+  }
+
+  &:hover {
+    opacity: 1 !important;
+  }
 
   img {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
   }
 }
 
 // Estilos para o botão de adicionar tarefa
 .addTaskBtn {
   display: block;
-  width: 450px;
-  height: 51px;
-  padding: 0.8rem;
-  margin: 1rem auto 6em;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0 6em;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(45deg, #0796D3, #53C0F0);
+  background: v.$primary;
   color: white;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
   cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background: v.$primary-hover;
+  }
 }
 
 // Estilos para a sobreposição do modal
@@ -168,15 +226,17 @@ $hover-bg: #F7F9FD;
   left: 0;
   right: 0;
   bottom: 0;
-  background: $modal-bg;
-  @include flex-center;
+  background: v.$modal-bg;
+  @include v.flex-center;
+  z-index: 999;
 }
 
 // Estilos para o modal
 .modal {
-  background-color: $white;
-  padding: 2rem;
-  @include box-style(450px, 286px, 16px, $shadow);
+  background-color: v.$surface;
+  padding: 1.75rem;
+  @include v.box-style(380px, auto, 12px, v.$shadow);
+  border: 1px solid v.$border;
   position: relative;
   z-index: 1000;
   max-height: 80vh;
@@ -184,147 +244,137 @@ $hover-bg: #F7F9FD;
 
   h3 {
     margin-bottom: 1rem;
-    font-size: 24px;
-    color: #000;
-    font-weight: 500;
+    font-size: 16px;
+    color: v.$text;
+    font-weight: 600;
   }
 
   h4 {
-    font-size: 16px;
-    color: #000;
-    font-weight: 400;
-    margin: 1.8em 0 10px;
+    font-size: 12.5px;
+    color: v.$muted;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 1.2em 0 8px;
   }
 
   .modalInput {
     width: 100%;
-    padding: 0.7rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: $white;
-    font-size: 1rem;
-    color: $dark-gray;
+    padding: 0.65rem 0.75rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid v.$border;
+    border-radius: 8px;
+    background-color: v.$white;
+    font-size: 0.9rem;
+    color: v.$text;
+    outline: none;
+    transition: border-color 0.15s ease;
+
+    &:focus {
+      border-color: v.$primary;
+    }
   }
 
   .modalActions {
     display: flex;
-    justify-content: space-between;
-    margin-top: 1em;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.25em;
 
     .cancelBtn,
     .addBtn {
-      width: 185px;
-      height: 51px;
-      font-size: 16px;
-      padding: 0.7rem 1.5rem;
+      height: 38px;
+      padding: 0 1rem;
+      font-size: 13.5px;
+      font-weight: 500;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
 
     .cancelBtn {
-      background-color: #E7EEFB;
-      font-weight: 600;
+      background-color: transparent;
+      color: v.$muted;
+      border: 1px solid v.$border;
+
+      &:hover {
+        background-color: v.$hover-bg;
+      }
     }
 
     .addBtn {
-      background: linear-gradient(35deg, #0796D3, #53C0F0);
+      background: v.$primary;
       color: white;
+
+      &:hover {
+        background: v.$primary-hover;
+      }
     }
   }
 }
 
 // Estilos para o modal de deletar tarefa
 .deleteModal {
-  background-color: $white;
-  padding: 2rem;
-  @include box-style(450px, 232px, 16px, $shadow);
-  position: relative;
-  z-index: 1000;
-  overflow: hidden;
-
   h3 {
-    margin-bottom: 1rem;
-    font-size: 24px;
-    color: #000;
-    font-weight: 500;
+    color: v.$text;
   }
 
   p {
-    margin-top: 2em;
-    font-size: 16px;
-    color: #000;
+    margin-top: 0.5em;
+    font-size: 13.5px;
+    color: v.$muted;
   }
 
   .modalActions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3em;
+    margin-top: 1.5em;
 
-    .deleteBtn {
-      background: linear-gradient(25deg, #D30707, #F05353);
+    .confirmDeleteBtn {
+      background: v.$danger;
       color: white;
-      padding: 0.7rem 1.5rem;
+      padding: 0 1rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      width: 185px;
-      height: 51px;
+      height: 38px;
+      font-size: 13.5px;
+      font-weight: 500;
+      opacity: 1;
+
+      &:hover {
+        background: v.$danger-dark;
+      }
     }
   }
 }
 
 // Media Queries para telas menores
 @media screen and (max-width: 768px) {
-  .todoList {
-    width: 272px;
-    height: 428px;
+  .pageWrapper {
+    margin-top: 2.5em;
   }
 
-  .modal, .deleteModal {
-    width: 320px;
-    height: 690px;
+  .modal {
+    width: 300px;
     margin: 1em auto;
-    max-height: 90vh; 
-  }
-
-  .addTaskBtn, .modalInput {
-    width: 272px !important;
-  }
-
-  .modalInput {
-    font-size: 0.9rem;
+    max-height: 90vh;
   }
 
   .modalActions {
-    display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
+    .cancelBtn,
     .addBtn {
-      width: 272px !important;
-      height: 51px;
-      margin-bottom: 15px;
-      order: -1;
-    }
-
-    .cancelBtn {
-      width: 272px !important;
-      color: black;
-      height: 51px;
-      margin-bottom: 15px;
-      order: 1;
-    }
-
-    .deleteBtn {
       width: 100%;
-      margin-top: 1rem;
     }
   }
 
-  // Controle de altura das listas de tarefas
   .taskList, .completedTasksList {
-    max-height: 150px; 
-    overflow-y: auto;  
+    max-height: 150px;
+    overflow-y: auto;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    opacity: 0.55;
   }
 }

@@ -1,0 +1,36 @@
+// Paleta minimalista — neutra, com preto como único destaque
+
+$white: #ffffff;
+$bg: #fafafa;
+$surface: #ffffff;
+$border: #e4e4e7;
+$text: #18181b;
+$muted: #71717a;
+$hover-bg: #f4f4f5;
+
+$primary: #18181b;
+$primary-hover: #27272a;
+$primary-soft: #f4f4f5;
+
+$success: #16a34a;
+$success-soft: #f0fdf4;
+
+$danger: #dc2626;
+$danger-dark: #b91c1c;
+$danger-soft: #fef2f2;
+
+$modal-bg: rgba(24, 24, 27, 0.4);
+$shadow: 0 8px 24px rgba(24, 24, 27, 0.08);
+
+@mixin box-style($width, $height, $radius, $shadow) {
+  width: $width;
+  height: $height;
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

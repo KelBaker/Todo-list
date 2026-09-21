@@ -1,28 +1,14 @@
-// Variáveis
-$white: #ffffff;
-$light-gray: #d7dde9;
-$black: #000000;
+@use '../styles/variables' as v;
 
 .navbar {
-  background-color: $white;
+  background-color: v.$surface;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: $black;
-  height: 5em;
-  padding: 0 3em;
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 93%;
-    height: 0.2vh;
-    background: $light-gray;
-    transform: translateX(-50%);
-  }
+  color: v.$text;
+  height: 4.5em;
+  padding: 0 2em;
+  border-bottom: 1px solid v.$border;
 
   h1 {
     position: absolute;
@@ -30,41 +16,63 @@ $black: #000000;
     transform: translateX(-50%);
     margin: 0;
     text-align: center;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: v.$muted;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+      background-color: v.$hover-bg;
+    }
   }
 }
 
-.logo {
-  margin-left: 0;
+.brand {
+  font-weight: 600;
+  font-size: 1rem;
+  color: v.$text;
+  letter-spacing: -0.01em;
 }
 
+.nameInput {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  padding: 6px 10px;
+  border: 1px solid v.$border;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: v.$text;
+  text-align: center;
+  outline: none;
+
+  &:focus {
+    border-color: v.$primary;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
     padding: 1em;
     height: auto;
+    gap: 0.4em;
 
     h1 {
       position: static;
       transform: none;
-      margin-top: 0.5em;
-      margin-bottom: 0.5em;
-      font-size: 1.1em;
-      margin-left: 0; 
+      font-size: 0.95em;
     }
 
-    .data {
-      margin-top: 1em;
-      margin-left: 0; 
+    .nameInput {
+      position: static;
+      transform: none;
+      width: 100%;
     }
-
-    &::after {
-      width: 93%; 
-    }
-  }
-
-  .logo {
-    margin-left: 0; 
   }
 }
